@@ -1,0 +1,176 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+# Default values for eric-am-common-wfs-ui-dev-backend.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 3
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 0
+    maxSurge: 1
+
+global:
+  registry:
+    url: armdocker.rnd.ericsson.se
+    imagePullPolicy: IfNotPresent
+  iamClientSecretEnabled: true
+  clientSecret: "NmQxOWFiOWItOTAyMC00MjEwLWFiNGQtNTI4NDdiNWM5ZjMx"
+  hosts:
+    vnfm:
+    iam:
+    path: /vnfm/
+  timezone: UTC
+  iam:
+    clientId: eo
+    adminSecret: eric-sec-access-mgmt-creds
+    userKey: kcadminid
+    passwordKey: kcpasswd
+  nodeSelector: {}
+
+imageCredentials:
+  keycloak-client:
+    registry:
+      imagePullPolicy: IfNotPresent
+    repoPath: "proj-orchestration-so"
+  eric-am-common-wfs-ui-dev-backend:
+    registry:
+      imagePullPolicy: Always
+    repoPath: "proj-am/releases"
+  postgresCredentials:
+    secret: eric-sec-access-mgmt-creds
+
+images:
+  eric-am-common-wfs-ui-dev-backend:
+    name: eric-am-common-wfs-ui-dev-backend
+    tag: 0.0.97-SNAPSHOT-de3526e
+  keycloak-client:
+    name: keycloak-client
+    tag: 1.0.0-14
+
+nodeSelector: {}
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    memory: 800Mi
+    cpu: 200m
+
+ingress:
+  iccr: false
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: "10G"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "1800"
+  host:
+  enabled: false
+  path: /
+  tls:
+    enabled: true
+    secretname: vnfm-tls-secret
+
+eric-eo-api-gateway:
+  logging:
+    format:
+      json: false
+  iam:
+    uri:
+    kubernetesSecret: eric-am-common-wfs-ui-dev-backend-iam-client-secret
+    clientId: eo
+    tls:
+      secretName: iam-tls-secret
+  resources:
+    requests:
+      memory: 1512Mi
+      cpu: 100m
+    limits:
+      memory: 1512Mi
+      cpu: 1000m
+  db:
+    url: jdbc:postgresql://idam-database-pg:5432/apigateway
+    driver: org.postgresql.Driver
+    host: idam-database-pg
+    schema: apigateway
+    port: 5432
+    creationTime: 10
+    secret: eric-eo-database-pg-secret
+    # not part of gateway configuration
+    username: admin
+    password: test-pw
+    superUser: postgres
+    superPassword: test-pw
+
+vnfm:
+  userSecret: vnfm-user-credentials
+
+eric-sec-access-mgmt:
+  ingress:
+    enabled: true
+    hostname:
+    tls:
+      enabled: true
+      existingSecret: iam-tls-secret
+  persistence:
+    dbVendor: POSTGRES
+    dbName: idam
+    dbHost: idam-database-pg
+    dbsecret: eric-sec-access-mgmt-creds
+    dbUserkey: pguserid
+    dbPasswdkey: pgpasswd
+    tls:
+      enabled: false
+  service:
+    tls:
+      enabled: false
+  imageCredentials:
+    pullPolicy: IfNotPresent
+idam-database-pg:
+  credentials:
+    kubernetesSecretName: eric-sec-access-mgmt-creds
+    keyForUserId: pguserid
+    keyForUserPw: pgpasswd
+    keyForSuperPw: pgpasswd
+    keyForReplicaId: pguserid
+    keyForReplicaPw: pgpasswd
+    keyForMetricsPw: pgpasswd
+  postgresDatabase: idam
+  postgresConfig:
+    max_prepared_transactions: 100
+  persistentVolumeClaim:
+    enabled: true
+    storageClassName: network-block
+  patroni:
+    logLevel: WARNING
+  highAvailability:
+    synchronousModeEnabled: false
+    replicaCount: 1
+
+tags:
+  gateway: true
+
+
+system-user:
+  credentials:
+    username: admin
+    password: admin
+labels: {}
+annotations: {}

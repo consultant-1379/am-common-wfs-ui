@@ -1,0 +1,40 @@
+{
+  "modules": [
+    {
+      "name": "settings-panel",
+      "version": "1.0.0",
+      "path": "/src/panels",
+      "main": "settings-panel.js"
+    },
+    {
+      "name": "resources",
+      "version": "1.0.0",
+      "path": "/src/apps/resources",
+      "main": "resources.js"
+    },
+    {
+      "name": "packages",
+      "version": "1.0.0",
+      "path": "/src/apps/packages",
+      "main": "packages.js"
+    },
+    {
+      "name": "operations",
+      "version": "1.0.0",
+      "path": "/src/apps/operations",
+      "main": "operations.js"
+    },
+    {
+      "name": "clusters",
+      "version": "1.0.0",
+      "path": "/src/apps/clusters",
+      "main": "clusters.js"
+    },
+    {
+      "name": "user-administration",
+      "version": "1.0.0",
+      "path": "/src/apps/user-administration",
+      "main": "user-administration.js"
+    }
+  ]
+}

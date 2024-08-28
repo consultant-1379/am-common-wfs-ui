@@ -1,0 +1,17 @@
+{
+  "script": "upgrade-wizard/UpgradeWizard",
+  "title": "UPGRADE_WIZARD",
+  "menu": {
+    "id": "UPGRADE_WIZARD",
+    "data": {
+      "path": "resources/upgrade-wizard"
+    }
+  },
+  "route": "upgrade-wizard",
+  "localePath": "locale/",
+  "dependencies": {
+    "@eui/component": "0.6.4",
+    "@eui/lit-component": "0.6.4",
+    "@eui/app": "0.6.1"
+  }
+}

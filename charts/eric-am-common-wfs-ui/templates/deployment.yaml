@@ -1,0 +1,203 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+{{/*
+Values for probes
+*/}}
+{{- $probesValue := fromJson (include "eric-am-common-wfs-ui.probes" .) -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "eric-am-common-wfs-ui.name" . }}
+  labels: {{- include "eric-am-common-wfs-ui.labels.extended-defaults" . | nindent 4 }}
+  annotations: {{- include "eric-am-common-wfs-ui.annotations" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: {{ .Values.updateStrategy.type | quote }}
+  {{- if and (eq .Values.updateStrategy.type "RollingUpdate") .Values.updateStrategy.rollingUpdate }}
+    rollingUpdate:
+      maxUnavailable: {{ .Values.updateStrategy.rollingUpdate.maxUnavailable }}
+      maxSurge: {{ .Values.updateStrategy.rollingUpdate.maxSurge }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: {{ template "eric-am-common-wfs-ui.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        {{- $commonLabels := include "eric-am-common-wfs-ui.labels.extended-defaults" . | fromYaml }}
+        {{- $serviceMesh := include "eric-am-common-wfs-ui.service-mesh-inject" . | fromYaml }}
+        {{- include "eric-eo-evnfm-library-chart.mergeLabels" (dict "location" .Template.Name "sources" (list $commonLabels
+            $serviceMesh)) | trim |nindent 8 }}
+      annotations:
+        {{- $commonAnnotations := include "eric-am-common-wfs-ui.annotations" . | fromYaml }}
+        {{- $serviceMesh := include "eric-am-common-wfs-ui.service-mesh-inject" . | fromYaml }}
+        {{- $serviceMeshVersion := include "eric-am-common-wfs-ui.service-mesh-version" . | fromYaml }}
+        {{- $serviceMeshLogs := include "eric-am-common-wfs-ui.service-mesh-logs" . | fromYaml }}
+        {{- include "eric-eo-evnfm-library-chart.mergeAnnotations" (dict "location" .Template.Name "sources" (list $commonAnnotations
+            $serviceMesh $serviceMeshVersion $serviceMeshLogs)) | trim | nindent 8 }}
+    spec:
+      securityContext:
+        fsGroup: {{ include "eric-am-common-wfs-ui.fsGroup" . }}
+      affinity:
+        podAntiAffinity:
+      {{- if eq .Values.affinity.podAntiAffinity "hard" }}
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+      {{- else if eq .Values.affinity.podAntiAffinity "soft" }}
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+      {{- end }}
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - {{ template "eric-am-common-wfs-ui.name" . }}
+              topologyKey: {{ .Values.affinity.topologyKey }}
+      {{- if include "eric-am-common-wfs-ui.pullSecrets" . }}
+      imagePullSecrets:
+        - name: {{ template "eric-am-common-wfs-ui.pullSecrets" . }}
+      {{- end }}
+      serviceAccountName: {{ template "eric-am-common-wfs-ui.service-account.name" . }}
+      {{- if include "eric-am-common-wfs-ui.podPriority" . }}
+      priorityClassName: {{- include "eric-am-common-wfs-ui.podPriority" . | indent 2 }}
+      {{- end }}
+      automountServiceAccountToken: false
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ template "eric-am-common-wfs-ui.mainImagePath" . }}
+          imagePullPolicy: {{ template "eric-am-common-wfs-ui.imagePullPolicy" . }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.container.ports.http }}
+              protocol: TCP
+          env:
+            - name: TZ
+              value: {{ .Values.global.timezone }}
+            - name: SERVICE_ID
+              value: "eric-eo-evnfm-wfs-ui"
+          {{- if .Values.global.logging }}
+            {{- if .Values.global.logging.enabled }}
+            - name: LOG_STREAMINGMETHOD
+              value: {{ include "eric-am-common-wfs-ui.log.streamingMethod" . }}
+            {{- if or (eq (include "eric-am-common-wfs-ui.log.streamingMethod" . ) "dual") (eq (include "eric-am-common-wfs-ui.log.streamingMethod" . ) "direct") }}
+            - name: LOGSTASH_HOST
+              value: "{{ .Values.logging.logstash.host }}"
+            - name: LOGSTASH_PORT
+              value: "{{ .Values.logging.logstash.port }}"
+            {{- end}}
+            {{- end}}
+            {{- end}}
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            privileged: false
+            runAsNonRoot: true
+            runAsGroup: 298250
+            capabilities:
+              drop:
+                - all
+          volumeMounts:
+            - name: tmp-data
+              mountPath: /tmp
+              readOnly: false
+          {{- if .Values.global.security.tls.enabled }}
+            - name: eric-am-common-wfs-ui-server-cert-volume
+              mountPath: "/run/secrets/server"
+              readOnly: true
+            - name: eric-am-common-wfs-ui-root-ca-cert-volume
+              mountPath: "/run/secrets/ca/root"
+              readOnly: true
+          {{- end }}
+          resources:
+            requests:
+            {{- if .Values.resources.commonwfsui.requests.cpu }}
+              cpu: {{ .Values.resources.commonwfsui.requests.cpu | quote }}
+            {{- end }}
+            {{- if .Values.resources.commonwfsui.requests.memory }}
+              memory: {{ .Values.resources.commonwfsui.requests.memory | quote }}
+            {{- end }}
+            {{- if index .Values.resources.commonwfsui.requests "ephemeral-storage" }}
+              ephemeral-storage: {{ index .Values.resources.commonwfsui.requests "ephemeral-storage" | quote }}
+            {{- end }}
+            limits:
+            {{- if .Values.resources.commonwfsui.limits.cpu }}
+              cpu: {{ .Values.resources.commonwfsui.limits.cpu | quote }}
+            {{- end }}
+            {{- if .Values.resources.commonwfsui.limits.memory }}
+              memory: {{ .Values.resources.commonwfsui.limits.memory | quote }}
+            {{- end }}
+            {{- if index .Values.resources.commonwfsui.limits "ephemeral-storage" }}
+              ephemeral-storage: {{ index .Values.resources.commonwfsui.limits "ephemeral-storage" | quote }}
+            {{- end }}
+          livenessProbe:
+            exec:
+              command:
+               - curl
+               - localhost:{{ .Values.container.ports.http }}
+            initialDelaySeconds: {{ $probesValue.commonwfsui.livenessProbe.initialDelaySeconds }}
+            timeoutSeconds: {{ $probesValue.commonwfsui.livenessProbe.timeoutSeconds }}
+            periodSeconds: {{ $probesValue.commonwfsui.livenessProbe.periodSeconds }}
+            failureThreshold: {{ $probesValue.commonwfsui.livenessProbe.failureThreshold }}
+          readinessProbe:
+            exec:
+             command:
+              - curl
+              - localhost:{{ .Values.container.ports.http }}
+            initialDelaySeconds: {{ $probesValue.commonwfsui.readinessProbe.initialDelaySeconds }}
+            timeoutSeconds: {{ $probesValue.commonwfsui.readinessProbe.timeoutSeconds }}
+            periodSeconds: {{ $probesValue.commonwfsui.readinessProbe.periodSeconds }}
+            failureThreshold: {{ $probesValue.commonwfsui.readinessProbe.failureThreshold }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector: {{- include "eric-am-common-wfs-ui.nodeSelector" . | nindent 8 }}
+      {{- else if .Values.global.nodeSelector }}
+      nodeSelector: {{- include "eric-am-common-wfs-ui.nodeSelector" . | nindent 8 }}
+      {{- end }}
+      {{- if or .Values.tolerations (and .Values.global .Values.global.tolerations) }}
+      tolerations: {{ include "eric-am-common-wfs-ui.tolerations.commonwfsui" . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.terminationGracePeriodSeconds }}
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds.commonwfsui | int }}
+      {{- end }}
+      volumes:
+        - name: tmp-data
+          emptyDir: {}
+      {{- if .Values.global.security.tls.enabled }}
+        - name: eric-am-common-wfs-ui-server-cert-volume
+          secret:
+            optional: true
+            secretName: {{ template "eric-am-common-wfs-ui.name" . }}-server-cert
+        - name: eric-am-common-wfs-ui-root-ca-cert-volume
+          secret:
+            optional: true
+            secretName: {{ template "tls.secret.trustedInternalRootCa" . }}
+      {{- end }}
+    {{- if .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
+      {{- range $constraints := .Values.topologySpreadConstraints }}
+        - maxSkew: {{ $constraints.maxSkew }}
+          topologyKey: {{ $constraints.topologyKey }}
+          whenUnsatisfiable: {{ $constraints.whenUnsatisfiable }}
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ template "eric-am-common-wfs-ui.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name | quote }}
+      {{- end }}
+    {{- end }}

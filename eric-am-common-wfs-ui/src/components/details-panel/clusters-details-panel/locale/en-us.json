@@ -1,0 +1,7 @@
+{
+  "name": "Cluster name",
+  "isDefault": "Is default",
+  "status": "Usage state",
+  "crdNamespace": "CRD Namespace",
+  "description": "Description"
+}

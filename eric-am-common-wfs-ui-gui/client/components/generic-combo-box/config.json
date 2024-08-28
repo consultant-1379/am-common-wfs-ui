@@ -1,0 +1,8 @@
+{
+  "script": "generic-combo-box/GenericComboBox",
+  "id": "GenericComboBox",
+  "data": {},
+  "dependencies": {
+    "@eui/lit-component": "0.6.4"
+  }
+}

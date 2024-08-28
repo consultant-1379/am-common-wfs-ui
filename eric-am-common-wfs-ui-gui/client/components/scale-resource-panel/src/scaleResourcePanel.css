@@ -1,0 +1,92 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+/* style goes here */
+:host {
+  display: block;
+}
+
+.divTableBody {
+  display: table-row-group;
+}
+
+.divTableRow {
+  display: table-row;
+}
+
+.divTableCell {
+  width: 13em;
+  display: table-cell;
+  padding-bottom: 15px;
+  padding-right: 15px;
+}
+
+.add-cancel-scale {
+  display: inline-flex;
+}
+
+.scale-perform-button {
+  margin-left: 16px;
+}
+
+.divTableBody>scale-form-footer eui-base-v0-button {
+  width: 30%;
+}
+
+.errorMessage {
+  display: none;
+  color: red;
+  font-weight: bold;
+  opacity: 0.7;
+  margin-top: 5px;
+  position: relative;
+}
+
+.scaling-level-values span {
+  display: block;
+  float: right;
+}
+
+.scaling-level-values {
+  display: block;
+  margin: 10px;
+}
+
+.scaleConfirmationTableParent {
+  max-height: 400px;
+  width:100%;
+  margin: auto;
+
+}
+
+.no-scroll{
+  padding-top: none;
+  overflow-y: hidden;
+}
+
+.scale-confirm-dialog-holder{
+  max-height: 300px;
+}
+.confirm-scale-heading{
+  padding-bottom: 10px;
+}
+
+.confirm-scale-footer{
+  padding-top: 40px;
+}
+
+.scale-form-footer{
+  padding-top: 30px;
+}

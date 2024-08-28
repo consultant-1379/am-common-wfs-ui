@@ -1,0 +1,8 @@
+{
+  "script":"generic-key-value-list/GenericKeyValueList",
+  "id":"GenericKeyValueList",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

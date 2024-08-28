@@ -1,0 +1,118 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+/* style goes here */
+:host {
+  display: block;
+}
+.table {
+  display: table;
+  width: 100%;
+}
+
+.tr {
+  display: table-row;
+  width: 100%;
+}
+
+.td {
+  display: table-cell;
+}
+
+.td:first-child {
+  width: 15rem;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 15%;
+}
+
+.contentExtension {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.column:first-child {
+  margin-right: 5%;
+  width: 15rem;
+  margin-bottom: 2rem;
+}
+
+.column:nth-child(2) {
+  width: 46rem;
+}
+.description{
+  width: 15rem
+}
+
+.heading {
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 1rem;
+}
+
+.notBold {
+  font-weight: normal;
+}
+
+.notBold .fieldHeader {
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.fieldHeader {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.fieldExtensionHeader {
+  font-weight: bold;
+}
+
+.radio {
+  margin-left: 0.5rem;
+}
+
+.fieldValue {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.errorMessage {
+  display: none;
+  color: red;
+  opacity: 0.7;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+e-validation-checker{
+  padding-left: .5rem;
+}
+
+.disable-validation{
+  vertical-align: middle;
+}
+
+.descriptionText {
+  line-height: 1.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}

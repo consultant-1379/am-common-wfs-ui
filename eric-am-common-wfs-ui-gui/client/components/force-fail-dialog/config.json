@@ -1,0 +1,8 @@
+{
+  "script":"force-fail-dialog/ForceFailDialog",
+  "id":"ForceFailDialog",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

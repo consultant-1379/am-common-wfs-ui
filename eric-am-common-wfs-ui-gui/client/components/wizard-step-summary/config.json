@@ -1,0 +1,8 @@
+{
+  "script":"wizard-step-summary/WizardStepSummary",
+  "id":"WizardStepSummary",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "script":"heal-resource-panel/HealResourcePanel",
+  "id":"HealResourcePanel",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component":"0.8.x"
+  }
+}

@@ -1,0 +1,59 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations: {{- include "eric-am-common-wfs-ui-dev-backend.annotations" . | nindent 4 }}
+  name: {{ template "eric-am-common-wfs-ui-dev-backend.name" . }}
+  labels: {{- include "eric-am-common-wfs-ui-dev-backend.labels.extended-defaults" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "eric-am-common-wfs-ui-dev-backend.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      annotations:
+        {{- include "eric-am-common-wfs-ui-dev-backend.annotations" . | nindent 8 }}
+        {{- include "eric-am-common-wfs-ui-dev-backend.service-mesh-inject" .| nindent 8 }}
+        {{- include "eric-am-common-wfs-ui-dev-backend.service-mesh-version" .| nindent 8 }}
+      labels:
+        {{- include "eric-am-common-wfs-ui-dev-backend.labels.extended-defaults" . | nindent 8 }}
+        app: {{ template "eric-am-common-wfs-ui-dev-backend.name" . }}
+        release: {{ .Release.Name }}      
+        {{- include "eric-am-common-wfs-ui-dev-backend.service-mesh-inject" .| nindent 8 }}
+    spec:
+      containers:
+        - name: eric-am-common-wfs-ui-dev-backend
+          image: {{ template "eric-am-common-wfs-ui-dev-backend.registryUrl" . }}/{{ index .Values "imageCredentials" "eric-am-common-wfs-ui-dev-backend" "repoPath"  }}/{{ index .Values "images" "eric-am-common-wfs-ui-dev-backend" "name"  }}:{{ index .Values "images" "eric-am-common-wfs-ui-dev-backend" "tag" }}
+          imagePullPolicy: {{ template "eric-am-common-wfs-ui-dev-backend.imagePullPolicy" . }}
+          ports:
+            - name: orchestrator
+              containerPort: 10101
+              protocol: TCP
+            - name: onboarding
+              containerPort: 10102
+              protocol: TCP
+          env:
+            - name: TZ
+              value: {{ .Values.global.timezone }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector: {{- include "eric-am-common-wfs-ui-dev-backend.nodeSelector" . | nindent 8 }}
+      {{- else if .Values.global.nodeSelector }}
+      nodeSelector: {{- include "eric-am-common-wfs-ui-dev-backend.nodeSelector" . | nindent 8 }}
+      {{- end }}

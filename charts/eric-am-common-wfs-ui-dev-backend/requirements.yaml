@@ -1,0 +1,38 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+dependencies:
+- name: eric-eo-api-gateway
+  repository: https://arm.rnd.ki.sw.ericsson.se/artifactory/proj-so-gs-all-helm/
+  tags:
+  - gateway
+  version: 3.0.0-77
+- name: eric-sec-access-mgmt
+  repository: https://arm.rnd.ki.sw.ericsson.se/artifactory/proj-adp-gs-all-helm/
+  tags:
+  - gateway
+  version: 13.0.0-22
+- alias: idam-database-pg
+  name: eric-data-document-database-pg
+  repository: https://arm.rnd.ki.sw.ericsson.se/artifactory/proj-adp-gs-all-helm/
+  tags:
+  - gateway
+  version: 7.7.0+27
+- name: eric-evnfm-rbac
+  repository: https://arm.epk.ericsson.se/artifactory/proj-eo-evnfm-helm/
+  tags:
+  - gateway
+  version: 0.48.0+1

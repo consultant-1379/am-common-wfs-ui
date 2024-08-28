@@ -1,0 +1,8 @@
+{
+  "script":"wizard-step-package-selection/WizardStepPackageSelection",
+  "id":"WizardStepPackageSelection",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

@@ -1,0 +1,156 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+:host {
+  display: block;
+  direction: ltr;
+  --text-fade-80: rgb(242, 242, 242);
+  --settings-button-color:  rgb(242, 242, 242);
+  --settings-button-border-color:  rgb(242, 242, 242);
+  --text: rgb(242, 242, 242);
+  --btn-default: rgb(242, 242, 242);
+  --btn-default-active: rgb(242, 242, 242);
+  --btn-default-text: rgb(24, 24, 24);
+}
+
+.settings-panel {
+  display: none;
+}
+
+:host div.settings-panel:nth-child(3) {
+  display: flex;
+  width: calc(100 - 48px);
+  padding: 16px 24px 72px 24px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 48px);
+  justify-content: baseline;
+  margin-bottom: 0;
+}
+
+.container .profile {
+  flex: 0 0 auto;
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+}
+
+
+.container .profile .icon-profile {
+  font-size: 64px;
+}
+
+.container .profile .username {
+  margin-top: 8px;
+  font-size: 17px;
+}
+
+.container .content {
+  flex: 1;
+}
+
+.container .content .title {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.container .content .item .left {
+  display: inline-block;
+  float: left;
+}
+
+.container .content .item .right {
+  display: block;
+  padding-right: 20px;
+  text-align: right;
+  float: right;
+}
+
+.container .bottom {
+  position: absolute;
+  bottom: 30px;
+  align-self: center;
+  width: 75%;
+}
+
+.container .bottom .btn {
+  border-color: var(--settings-button-border-color);
+  color: var(--settings-button-color);
+  margin-bottom: 0;
+}
+
+.container .bottom .btn.big {
+  width: 80vw;
+}
+
+.container p {
+  color: var(--settings-text-color);
+}
+
+:host([theme=v1]) .container p {
+  color: #333;
+}
+
+.container .bottom .btn.big {
+  margin: 0 auto;
+  display: block;
+}
+
+@media only screen and (max-height: 380px) {
+  .container .bottom {
+    position: static;
+    bottom: 30px;
+    align-self: center;
+    margin-top: 25px;
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 30em) {
+  .hidden {
+    height: calc(100vh - var(--systembar-height));
+    padding: var(--space-xl);
+    opacity: 0;
+    margin-right: -300px;
+  }
+  .container .bottom .btn.big {
+    width: 230px;
+  }
+}
+
+.item-language-select {
+  padding-top: 40px;
+}
+
+.system-info-label {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.system-info-version {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.system-info-version-list {
+    max-height: 15rem;
+    overflow: auto;
+}
+
+.system-info-no-services {
+    padding-top: 1rem;
+}

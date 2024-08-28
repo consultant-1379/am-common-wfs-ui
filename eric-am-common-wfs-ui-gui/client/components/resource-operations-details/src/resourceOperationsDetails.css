@@ -1,0 +1,85 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+/* style goes here */
+:host {
+  display: block;
+}
+
+.customPanel {
+  display: table-row;
+  width: 100%;
+}
+
+.table-panel {
+  border-right: thin solid #d3d3d3;
+  display: table-cell;
+  padding-right: 1em;
+}
+
+.customMainPanelInfo {
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.customRightPanel {
+  display: table-cell;
+  width: 40%;
+  padding-left: 1em;
+}
+
+.close-flyout {
+  float: right;
+  cursor: pointer;
+}
+
+.customRightPanelInfo {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.customPanelText {
+  color: var(--gray);
+  height: 50vh;
+  overflow: auto;
+  word-break: break-word;
+}
+
+.table-count {
+  color: var(--gray);
+}
+
+.operationMessageDialog-panel {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.operationMessageDialog-panel:hover {
+  color: var(--blue-lighten-15);
+}
+
+.operationMessageDialog-panel:hover > eui-v0-icon {
+  --icon-color: var(--blue-lighten-15);
+}
+
+.operationMessageDialog-content {
+  height: 100%;
+  overflow: auto;
+}
+
+.operationMessageDialog-date {
+  color: var(--gray);
+}

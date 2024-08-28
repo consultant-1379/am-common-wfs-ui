@@ -1,0 +1,8 @@
+{
+  "script":"additional-attributes-tab/AdditionalAttributesTab",
+  "id":"AdditionalAttributesTab",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

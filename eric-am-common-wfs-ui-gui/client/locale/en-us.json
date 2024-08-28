@@ -1,0 +1,21 @@
+{
+  "CONTAINER_TITLE": "Evolved VNF Manager",
+  "CONTAINER_TITLE_SHORT": "Evolved VNFM",
+  "MENU_TITLE": "Menu",
+  "MENU": {
+    "RESOURCES": "Resources",
+    "PACKAGES": "Packages",
+    "OPERATIONS": "Operations",
+    "CISM_CLUSTERS": "CISM Clusters",
+    "PACKAGE_DETAILS": "Package Details",
+    "RESOURCE_DETAILS": "Resource Details",
+    "INSTANTIATE_WIZARD": "Instantiate",
+    "RESOURCE_ADD_NODE": "Add node to ENM",
+    "UPGRADE_WIZARD": "Upgrade",
+    "DOCUMENTATION": "Documentation",
+    "USER_ADMINISTRATION": "User Administration",
+    "RESOURCE_SCALE": "Scale Resource",
+    "RESOURCE_HEAL": "Heal Resource",
+    "RESOURCE_ROLLBACK":"Rollback Resource"
+  }
+}

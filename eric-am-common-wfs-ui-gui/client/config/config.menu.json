@@ -1,0 +1,35 @@
+{
+  "app": {
+    "options": {},
+    "menu": {
+      "data": [
+        {
+          "id": "RESOURCES",
+          "label": "RESOURCES",
+          "active": true,
+          "data": { "path": "resources" }
+        },
+        {
+          "id": "PACKAGES",
+          "label": "PACKAGES",
+          "data": { "path": "packages" }
+        },
+        {
+          "id": "OPERATIONS",
+          "label": "OPERATIONS",
+          "data": { "path": "operations" }
+        },
+        {
+          "id": "CISM_CLUSTERS",
+          "label": "CISM_CLUSTERS",
+          "data": { "path": "clusters" }
+        },
+        {
+          "id": "USER_ADMINISTRATION",
+          "label": "USER_ADMINISTRATION",
+          "data": { "path": "user-administration" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+-DhelmDesignRule.setValue.eric-am-common-wfs-ui="ingress.enabled=false;global.networkPolicy.enabled=true"

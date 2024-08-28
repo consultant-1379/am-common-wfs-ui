@@ -1,0 +1,53 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~ COPYRIGHT Ericsson 2024
+ ~
+ ~
+ ~
+ ~ The copyright to the computer program(s) herein is the property of
+ ~
+ ~ Ericsson Inc. The programs may be used and/or copied only with written
+ ~
+ ~ permission from Ericsson Inc. or in accordance with the terms and
+ ~
+ ~ conditions stipulated in the agreement/contract under which the
+ ~
+ ~ program(s) have been supplied.
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <script>
+      const pathname = window.location.pathname;
+      const isTrailingSlash = pathname.endsWith("/");
+      let slash = "";
+      if (pathname.length > 1 && !isTrailingSlash) {
+        slash = "/";
+      }
+      let base = document.getElementsByTagName("base")[0];
+      base.setAttribute(
+        "href",
+        window.location.protocol + "//" + window.location.host + pathname + slash
+      );
+    </script>
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="assets/css/container.shared.css" media="screen" />
+    <script>
+      var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+      var isEdge = /Edge/.test(navigator.userAgent);
+      if (isIE11 || isEdge) {
+        window.location = "browser.support.html";
+      }
+    </script>
+  </head>
+
+  <body class="level-0 light">
+    <script src="config/defaults.js"></script>
+    <script src="polyfills/webcomponents-lite.js"></script>
+    <script src="libs/system.js"></script>
+    <script src="libs/@eui/container/0/eui-container-umd.js"></script>
+  </body>
+</html>

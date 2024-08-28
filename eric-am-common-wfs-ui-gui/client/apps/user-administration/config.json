@@ -1,0 +1,18 @@
+{
+  "script":"user-administration/UserAdministration",
+  "title":"USER_ADMINISTRATION",
+  "route":"user-administration",
+  "localePath": "locale/",
+  "menu": {
+    "id": "USER_ADMINISTRATION",
+    "data": {
+      "path": "user-administration"
+    }
+  },
+  "dependencies": {
+    "@eui/component":"0.6.4",
+    "@eui/lit-component":"0.6.4",
+    "@eui/app":"0.6.x"
+  },
+  "components": {}
+}

@@ -1,0 +1,8 @@
+{
+  "script":"generic-key-map-card-group/GenericKeyMapCardGroup",
+  "id":"GenericKeyMapCardGroup",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component":"0.11.x"
+  }
+}

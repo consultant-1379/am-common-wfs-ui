@@ -1,0 +1,21 @@
+[
+  {
+    "code": ["ERR_001"],
+    "title": "Sorry",
+    "description": "We are experiencing technical difficulties with our services. Please try again later.",
+    "type": "error"
+  },
+  {
+    "code": ["ERR_002"],
+    "title": "Internal Error",
+    "description": "No response provided for request.",
+    "type": "error",
+    "duration": 10000
+  },
+  {
+    "code": ["ERR_010"],
+    "title": "Error",
+    "description": "Failed to set default cluster.",
+    "type": "error"
+  }
+]

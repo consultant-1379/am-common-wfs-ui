@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~ COPYRIGHT Ericsson 2024
+ ~
+ ~
+ ~
+ ~ The copyright to the computer program(s) herein is the property of
+ ~
+ ~ Ericsson Inc. The programs may be used and/or copied only with written
+ ~
+ ~ permission from Ericsson Inc. or in accordance with the terms and
+ ~
+ ~ conditions stipulated in the agreement/contract under which the
+ ~
+ ~ program(s) have been supplied.
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="All Tests Suite" verbose="1">
+    <test name="Application launching test" parallel="none" >
+        <classes>
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.ApplicationLaunchingTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.DocumentationTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.PackageListTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.PackageTests" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.ScaleTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.SyncTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.CleanUpTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.RollbackResourceTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.HealTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.UpgradeResourceTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.BackupResourceTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.CISMClustersTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.RbacTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.BackupsListTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.SidePanelBackupsListTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.BackupDeleteTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.BackupExportTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.ForceFailOperationsTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.ForceFailResourceDetailsOperationTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.ViewErrorMessageResourceDetailsOperationTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.RollbackOperationTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.RollbackResourceDetailsOperationTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.PaginationOperationsTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.PaginationResourcesTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.ModifyVnfInfoTest" />
+            <class name="com.ericsson.orchestration.mgmt.wfs.ui.testware.tests.InstantiateWizardTest" />
+        </classes>
+    </test>
+</suite>

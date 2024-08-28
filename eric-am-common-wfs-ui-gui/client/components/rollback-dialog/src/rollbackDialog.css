@@ -1,0 +1,95 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+/* style goes here */
+:host {
+  display: block;
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+@media (max-width: 958px) {
+  .leftTableCell {
+    display: table-cell;
+    width: 50%;
+  }
+
+  .errorMessage {
+    display: none;
+    color: red;
+    width: 80%;
+  }
+}
+
+@media (min-width: 959px ) {
+  .leftTableCell {
+    display: table-cell;
+    width: 35%;
+  }
+
+  .errorMessage {
+    display: none;
+    color: red;
+    width: 78%;
+  }
+}
+
+@media (min-width: 1532px ) {
+  .leftTableCell {
+    display: table-cell;
+    width: 200px;
+  }
+
+  .errorMessage {
+    display: none;
+    color: red;
+    width: 75%;
+  }
+}
+
+.errorMessage {
+  margin-top: 10px;
+}
+
+.table .leftTableCell eui-base-v0-checkbox {
+  width: fit-content;
+}
+
+.version {
+  opacity: 0.7;
+}
+
+.table {
+  display: table;
+  width: 100%;
+}
+
+.rightTableCell {
+  width: 100%;
+}
+
+.v_information {
+  margin-top: 15px;
+}
+
+.warning {
+  margin-top: 25px;
+}
+
+
+
+

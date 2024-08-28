@@ -1,0 +1,8 @@
+{
+  "script":"generic-key-value-file-text-input/GenericKeyValueFileTextInput",
+  "id":"GenericKeyValueFileTextInput",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component":"0.9.x"
+  }
+}

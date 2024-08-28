@@ -1,0 +1,149 @@
+{
+  "apps": [
+    {
+      "name": "resources",
+      "module": "resources",
+      "displayName": "Resources",
+      "type": "euisdk",
+      "route": "resources"
+    },
+    {
+      "name": "packages",
+      "module": "packages",
+      "displayName": "Packages",
+      "type": "euisdk",
+      "route": "packages"
+    },
+    {
+      "name": "operations",
+      "module": "operations",
+      "displayName": "Operations",
+      "type": "euisdk",
+      "route": "operations"
+    },
+    {
+      "name": "clusters",
+      "module": "clusters",
+      "displayName": "CISM Clusters",
+      "type": "euisdk",
+      "route": "clusters"
+    },
+    {
+      "name": "user-administration",
+      "module": "user-administration",
+      "displayName": "User Administration",
+      "type": "euisdk",
+      "route": "user-administration"
+    }
+  ],
+  "components": [
+    {
+      "name": "system-profile",
+      "module": "profile",
+      "version": "1.0.0"
+    },
+    {
+      "name": "clusters-table",
+      "module": "clusters-table",
+      "version": "1.0.0"
+    },
+    {
+      "name": "configuration-plugin",
+      "version": "1.0.0",
+      "descriptionLong": "my-plugin",
+      "type": "euisdk:plugin"
+    },
+    {
+      "name": "permission-plugin",
+      "version": "1.0.0",
+      "descriptionLong": "my-plugin",
+      "type": "euisdk:plugin"
+    },
+    {
+      "name": "yes-no-status",
+      "module": "yes-no-status",
+      "version": "1.0.0"
+    },
+    {
+      "name": "clusters-filter-panel",
+      "module": "clusters-filter-panel",
+      "version": "1.0.0"
+    },
+    {
+      "name": "clusters-details-panel",
+      "module": "clusters-details-panel",
+      "version": "1.0.0"
+    },
+    {
+      "name": "details-panel-item",
+      "module": "details-panel-item",
+      "version": "1.0.0"
+    },
+    {
+      "name": "context-menu",
+      "module": "context-menu",
+      "version": "1.0.0"
+    },
+    {
+      "name": "context-cell",
+      "module": "context-cell",
+      "version": "1.0.0"
+    },
+    {
+      "name": "deregister-cluster-dialog",
+      "module": "deregister-cluster-dialog",
+      "version": "1.0.0"
+    },
+    {
+      "name": "update-cluster-dialog",
+      "module": "update-cluster-dialog",
+      "version": "1.0.0"
+    },
+    {
+      "name": "make-default-cluster-dialog",
+      "module": "make-default-cluster-dialog",
+      "version": "1.0.0"
+    },
+    {
+      "name": "storage-plugin",
+      "version": "1.0.0",
+      "descriptionLong": "my-plugin",
+      "type": "euisdk:plugin"
+    },
+    {
+      "name": "update-cluster-form",
+      "module": "update-cluster-form",
+      "version": "1.0.0"
+    },
+    {
+      "name": "register-cluster-dialog",
+      "module": "register-cluster-dialog",
+      "version": "1.0.0"
+    },
+    {
+      "name": "register-cluster-form",
+      "module": "register-cluster-form",
+      "version": "1.0.0"
+    },
+    {
+      "name": "operations-table",
+      "module": "operations-table",
+      "version": "1.0.0"
+    },
+    {
+      "name": "operations-details-panel",
+      "module": "operations-details-panel",
+      "version": "1.0.0"
+    },
+    {
+      "name": "operations-filter-panel",
+      "module": "operations-filter-panel",
+      "version": "1.0.0"
+    },
+    {
+      "name": "filter-panel-checkbox",
+      "module": "filter-panel-checkbox",
+      "version": "1.0.0"
+    }
+  ]
+}

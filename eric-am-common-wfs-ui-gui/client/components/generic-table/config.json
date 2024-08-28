@@ -1,0 +1,8 @@
+{
+  "script":"generic-table/GenericTable",
+  "id":"GenericTable",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "script":"instantiate-wizard/InstantiateWizard",
+  "title":"INSTANTIATE_WIZARD",
+  "menu": {
+    "id": "INSTANTIATE_WIZARD",
+    "data": {
+      "path": "resources/instantiate-wizard"
+    }
+  },
+  "route":"instantiate-wizard",
+  "localePath": "locale/",
+  "dependencies":{
+    "@eui/component": "0.6.4",
+    "@eui/lit-component": "0.6.4",
+    "@eui/app": "0.6.1"
+  }
+}

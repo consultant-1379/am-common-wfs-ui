@@ -1,0 +1,8 @@
+{
+  "script":"resource-operations-details/ResourceOperationsDetails",
+  "id":"ResourceOperationsDetails",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

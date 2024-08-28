@@ -1,0 +1,64 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+
+body {
+  background-color: var(--layer2, #fafafa);
+  color: var(--text, #242424);
+}
+
+eui-container:not(:defined) {
+  display: none;
+}
+
+eui-container eui-icon {
+  --icon-color: var(--white, #ffffff);
+  --icon-size: 21px;
+}
+
+/* fonts */
+:root {
+  --is-size-1: 2rem;
+  --is-size-2: 1.5rem;
+  --is-size-3: 1.25rem;
+  --is-size-4: 1rem;
+  --is-size-5: 0.9rem;
+  --is-size-6: 0.8rem;
+}
+
+/* text weight */
+:root {
+  --has-text-weight-light: var(--weight-light);
+  --has-text-weight-regular: var(--weight-regular);
+  --has-text-weight-medium: var(--weight-medium);
+  --has-text-weight-bold: var(--weight-bold);
+}
+
+/* space */
+:root {
+  --has-space-right--small: var(--space-small);
+  --has-space-bottom--small: var(--space-small);
+  --has-space-bottom--base: var(--space-base);
+  --has-space-top--base: var(--space-base);
+}
+
+/* modificators */
+.is-flex {
+  display: flex;
+}
+
+.has-align-items-center {
+  align-items: center;
+}

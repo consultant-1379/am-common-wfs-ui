@@ -1,0 +1,18 @@
+{
+  "script":"resource-heal/ResourceHeal",
+  "title":"RESOURCE_HEAL",
+  "route":"resource-heal",
+  "localePath": "locale/",
+  "menu": {
+    "id": "RESOURCE_HEAL",
+    "data": {
+      "path": "resources/resource-heal"
+    }
+  },
+  "dependencies": {
+    "@eui/component":"0.8.x",
+    "@eui/lit-component":"0.8.x",
+    "@eui/app":"0.8.x"
+  },
+  "components": {}
+}

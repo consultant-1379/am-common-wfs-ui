@@ -1,0 +1,108 @@
+{
+  "debug": true,
+  "namespace": "EUI",
+  "menu": {
+    "menuConfig": "config/config.menu.json",
+    "openMenu": false
+  },
+  "showBreadcrumbs": true,
+  "component": {
+    "componentsPath": "components/"
+  },
+  "app": {
+    "defaultApp": "resources",
+    "appsPath": "apps/"
+  },
+  "panel": {
+    "panelsPath": "panels/"
+  },
+  "i18n": {
+    "defaultLocale": "en-us",
+    "defaultDateLocale": "en-us",
+    "localeIds": ["en-us"],
+    "localeIdsRTL": [],
+    "localesPath": "locale/",
+    "localesType": "file"
+  },
+  "cache": {
+    "timeout": 1,
+    "maxAge": 2,
+    "autoClear": true
+  },
+  "router": {
+    "autoUrlDecode": true,
+    "appRoot": "/",
+    "autoRestVars": true,
+    "varPrefix": "!",
+    "mode": "hash",
+    "allowDirect": true,
+    "singleMode": false,
+    "routeMap": {
+      "resources": "resources",
+      "packages": "packages",
+      "operations": "operations",
+      "package-details": "package-details",
+      "resource-details": "resource-details",
+      "instantiate-wizard": "instantiate-wizard",
+      "upgrade-wizard": "upgrade-wizard",
+      "documentation": "documentation",
+      "resource-add-node": "resource-add-node",
+      "resource-scale": "resource-scale",
+      "resource-heal": "resource-heal",
+      "resource-rollback":"resource-rollback"
+    }
+  },
+  "ui": {
+    "breadCrumbClick": true,
+    "top": [
+      {
+        "id": "static-logo",
+        "type": "package",
+        "path": "logo",
+        "position": "left"
+      },
+      {
+        "id": "bt-version",
+        "type": "package",
+        "position": "right",
+        "path": "version-system-bar-menu"
+      },
+      {
+        "id": "bt-documentation",
+        "type": "package",
+        "position": "right",
+        "path": "documentation-system-bar-menu",
+        "payload": {
+          "document": "user_guide"
+        }
+      },
+      {
+        "id": "bt-user-icon",
+        "type": "package",
+        "path": "user-display",
+        "position": "right",
+        "action": "LOAD_SYSTEM_PANEL",
+        "payload": "user-logout-panel"
+      }
+    ],
+    "left": {
+      "name": "menu-panel"
+    }
+  },
+  "authentication": {
+    "plugin": {
+      "name": "authentication",
+      "method": "checkStatus"
+    },
+    "redirect": "./login.html",
+    "validate": false
+  },
+  "plugin": {
+    "pluginsPath": "plugins/",
+    "pluginTimeout": 5000,
+    "plugins": [{ "name": "app-configuration" }, { "name": "user-credentials" }]
+  },
+  "content": {
+    "padding": false
+  }
+}

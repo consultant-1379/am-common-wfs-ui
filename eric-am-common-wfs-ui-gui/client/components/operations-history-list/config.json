@@ -1,0 +1,8 @@
+{
+  "script":"operations-history-list/OperationsHistoryList",
+  "id":"OperationsHistoryList",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

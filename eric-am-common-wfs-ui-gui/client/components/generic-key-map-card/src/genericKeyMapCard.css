@@ -1,0 +1,53 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+:host{
+  display: block;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.errorMessage {
+  color: red;
+}
+
+#keyTextFieldContainer {
+  height: 48px;
+}
+
+eui-layout-v0-card {
+  overflow: visible;
+  width: 500px;
+  background-color: var(--card-color-background, #fafafa);
+}
+
+eui-layout-v0-card:hover {
+  cursor: unset;
+}
+
+eui-v0-icon:hover {
+  cursor: pointer;
+}
+
+eui-v0-icon[disabled]:hover{
+  cursor: not-allowed;
+}
+
+eui-v0-icon[disabled] {
+  opacity: 0.4;
+}

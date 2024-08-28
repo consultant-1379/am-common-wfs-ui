@@ -1,0 +1,106 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~ COPYRIGHT Ericsson 2024
+~
+~
+~
+~ The copyright to the computer program(s) herein is the property of
+~
+~ Ericsson Inc. The programs may be used and/or copied only with written
+~
+~ permission from Ericsson Inc. or in accordance with the terms and
+~
+~ conditions stipulated in the agreement/contract under which the
+~
+~ program(s) have been supplied.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <title>Evolved VNF Manager</title>
+    <script type="module">
+      import('@webcomponents/scoped-custom-element-registry');
+      import('es-module-shims');
+      // Import polyfill for firefox and safari
+      if (!window.URLPattern) {
+        import('urlpattern-polyfill');
+      }
+    </script>
+
+    <script type="importmap-shim">
+      {
+        "imports": {
+          "settings-panel.js": "./src/panels/settings-panel.js",
+          "@eui/container": "./node_modules/@eui/container/index.js",
+          "@eui/navigation-menu": "./node_modules/@eui/navigation-menu/index.js",
+          "@eui/theme": "./node_modules/@eui/theme/index.js",
+          "clusters": "./src/apps/clusters/clusters.js",
+          "operations": "./src/apps/operations/operations.js",
+          "resources": "./src/apps/resources/resources.js",
+          "packages": "./src/apps/packages/packages.js",
+          "user-administration": "./src/apps/user-administration/user-administration.js",
+          "configuration-plugin": "./src/plugins/configuration-plugin.js",
+          "permission-plugin": "./src/plugins/permission-plugin.js",
+          "storage-plugin": "./src/plugins/storage-plugin.js"
+        }
+      }
+    </script>
+    <script type="module-shim">
+      import '@eui/container';
+      import { Theme, Icon } from '@eui/theme';
+      import { NavigationMenu } from '@eui/navigation-menu';
+
+      import SystemProfile from './src/components/system-bar/profile.js';
+
+      Theme.register('eui-theme');
+      Icon.register('eui-icon');
+      SystemProfile.register();
+      NavigationMenu.register('eui-navigation-menu');
+    </script>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <script>
+      const body = document.querySelector('body');
+      body.addEventListener('eui-theme-change', event => {
+        const theme = document.querySelector('eui-theme');
+        theme.theme = event.detail.theme;
+      });
+    </script>
+    <eui-theme
+      theme="light"
+      font-path="./node_modules/@eui/theme/dist/fonts/"
+    ></eui-theme>
+    <eui-container default-app="resources">
+      <eui-plugins></eui-plugins>
+      <eui-icon name="econ" slot="system-left"></eui-icon>
+      <span slot="system-left">Evolved VNF Manager</span>
+      <eui-navigation-menu slot="app-navigation"></eui-navigation-menu>
+      <eui-system-bar-actions>
+        <system-profile></system-profile>
+      </eui-system-bar-actions>
+    </eui-container>
+    <script>
+      // load the config files into the Container...
+      const loadConfig = async () => {
+        // fetch config.json (public config file)...
+        const config = await fetch('./config.json').then(response =>
+          response.json(),
+        );
+        const plugins = config.components.filter(
+          component => component.type === 'euisdk:plugin',
+        );
+
+        const euiContainer = document.querySelector('eui-container');
+        euiContainer.metaData = config;
+
+        const euiPlugins = document.querySelector('eui-plugins');
+        euiPlugins.pluginList = plugins;
+      };
+
+      loadConfig();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+:host {
+  display: block;
+}
+
+eui-base-v0-file-input {
+  min-width: 100px;
+}
+
+.topology-attributes-holder eui-base-v0-text-field,
+.topology-attributes-holder eui-base-v0-textarea,
+.topology-attributes-holder eui-base-v0-switch,
+.topology-attributes-holder eui-base-v0-dropdown,
+.topology-attributes-holder eui-base-v0-password-field {
+  width: 100%;
+}
+
+.topology-attribtute-field-label {
+  padding-right: var(--space-xxl, 32px);
+}
+
+.upload-file-holder {
+  float: left;
+  display: block;
+  margin-left: var(--space-xxl, 32px);
+}
+
+.upload-or-fields-radios {
+  float: left;
+  margin-bottom: var(--space-base, 8px);
+  margin-right: var(--space-xxl, 32px);
+}
+
+.topology-attributes-holder {
+  clear: both;
+}
+
+.topology-attributes-section-label,
+.override-attributes-section-label {
+  display: block;
+  padding-bottom: var(--space-small, 4px);
+  padding-top: var(--space-small, 4px);
+  margin-bottom: var(--space-base, 8px);
+  margin-top: var(--space-base, 8px);
+  font-weight: bold;
+}
+
+.override-attributes-section-label {
+  border-bottom: 1px solid darkgray;
+}
+
+.topology-attributes-holder .topology-attributes-section-label {
+  border-bottom: 1px solid var(--table-inner-gray, rgb(200, 200, 200));
+}
+
+.add-node-panel {
+  padding: var(--space-large, 16px);
+  flex-direction: column;
+  background: var(--layer2, rgb(242, 242, 242));
+  margin-bottom: var(--space-xl, 24px);
+}
+
+.confirm-add-node {
+  float: right;
+}
+
+.cancel-add-node {
+  float: left;
+}

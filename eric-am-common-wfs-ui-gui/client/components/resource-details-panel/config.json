@@ -1,0 +1,8 @@
+{
+  "script":"resource-details-panel/ResourceDetailsPanel",
+  "id":"ResourceDetailsPanel",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

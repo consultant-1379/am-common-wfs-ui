@@ -1,0 +1,17 @@
+{
+  "script":"resource-details/ResourceDetails",
+  "title":"RESOURCE_DETAILS",
+  "menu": {
+    "id": "RESOURCE_DETAILS",
+    "data": {
+      "path": "resources/resource-details"
+    }
+  },
+  "route":"resource-details",
+  "localePath": "locale/",
+  "dependencies":{
+    "@eui/component": "0.6.4",
+    "@eui/lit-component": "0.6.4",
+    "@eui/app": "0.6.1"
+  }
+}

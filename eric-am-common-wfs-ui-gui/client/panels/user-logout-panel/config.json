@@ -1,0 +1,8 @@
+{
+  "script":"user-logout-panel/UserLogoutPanel",
+  "id":"UserLogoutPanel",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

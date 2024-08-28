@@ -1,0 +1,18 @@
+{
+  "script":"documentation/Documentation",
+  "title":"DOCUMENTATION",
+  "route":"documentation",
+  "localePath": "locale/",
+  "menu": {
+    "id": "DOCUMENTATION",
+    "data": {
+      "path": "documentation"
+    }
+  },
+  "dependencies": {
+    "@eui/component":"0.6.x",
+    "@eui/lit-component":"0.6.x",
+    "@eui/app":"0.6.x"
+  },
+  "components": {}
+}

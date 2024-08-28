@@ -1,0 +1,30 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+.banner-block {
+  border: 1px solid #b0b0b0;
+  margin-bottom: 15px;
+}
+.banner-title  {
+  margin: 3px 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.banner-title > span  {
+  margin-left: 5px;
+  letter-spacing: 1px;
+}

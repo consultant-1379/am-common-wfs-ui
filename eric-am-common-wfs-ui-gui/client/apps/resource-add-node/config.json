@@ -1,0 +1,17 @@
+{
+  "script": "resource-add-node/ResourceAddNode",
+  "title": "RESOURCE_ADD_NODE",
+  "route": "resource-add-node",
+  "localePath": "locale/",
+  "menu": {
+    "id": "RESOURCE_ADD_NODE",
+    "data": {
+      "path": "resources/resource-add-node"
+    }
+  },
+  "dependencies": {
+    "@eui/component": "0.6.4",
+    "@eui/lit-component": "0.6.4",
+    "@eui/app": "0.6.1"
+  }
+}

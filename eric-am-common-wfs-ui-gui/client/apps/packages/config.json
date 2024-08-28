@@ -1,0 +1,17 @@
+{
+  "script": "packages/Packages",
+  "title": "PACKAGES",
+  "menu": {
+    "id": "PACKAGES",
+    "data": {
+      "path": "packages"
+    }
+  },
+  "route": "packages",
+  "localePath": "locale/",
+  "dependencies": {
+    "@eui/component": "0.6.4",
+    "@eui/lit-component": "0.6.4",
+    "@eui/app": "0.6.1"
+  }
+}

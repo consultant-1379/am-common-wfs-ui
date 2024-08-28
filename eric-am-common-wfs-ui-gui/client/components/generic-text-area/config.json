@@ -1,0 +1,8 @@
+{
+  "script":"generic-text-area/GenericTextArea",
+  "id":"GenericTextArea",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

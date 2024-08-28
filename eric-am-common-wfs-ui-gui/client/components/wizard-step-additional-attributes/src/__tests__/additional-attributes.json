@@ -1,0 +1,18 @@
+[
+    {
+        "type": "string",
+        "description": "ingress host for vnf1",
+        "required": true,
+        "metadata": {
+            "chart_param": "vnfc1.ingress.host"
+        }
+    },
+    {
+        "type": "string",
+        "description": "ingress host for vnf1",
+        "required": false,
+        "metadata": {
+            "chart_param": "vnfc1.test-cnf.ingress.host"
+        }
+    }
+]

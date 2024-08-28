@@ -1,0 +1,8 @@
+{
+  "script":"version-system-bar-menu/Main",
+  "id":"VersionSystemBarMenu",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component": "0.6.4"
+  }
+}

@@ -1,0 +1,174 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+# Default values for eric-am-common-wfs-ui.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 2
+podDisruptionBudget:
+  minAvailable: 50%
+
+nameOverride: "eric-am-common-wfs-ui"
+
+topologySpreadConstraints: {}
+
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 25%
+
+# DR-D1121-011 supported global parameters shall be left as comments (YAML comment) in the values.yaml
+#global:
+#  serviceMesh:
+#    enabled: false
+#  hosts:
+#    vnfm: ""
+#  registry:
+#    url: armdocker.rnd.ericsson.se
+#    imagePullPolicy: IfNotPresent
+##    pullSecret:
+#  timezone: UTC
+#  nodeSelector: {}
+#  labels: {}
+#  annotations: {}
+## internalIPFamily: IPv6 or IPv4
+#  # DR D1123-134
+#  securityPolicy:
+#    rolekind: "" # possible values: "ClusterRole", "Role", ""
+#  security:
+#    tls:
+#      enabled: true
+
+imageCredentials:
+  wfsUIService:
+    repoPath: # see default value in eric-product-info.yaml file
+#    registry:
+#    url:
+#    pullSecret:
+
+container:
+  ports:
+    http: 8080
+
+nodeSelector: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  commonwfsui:
+    requests:
+      memory: "200Mi"
+      cpu: "200m"
+      ephemeral-storage: "2Gi"
+    limits:
+      memory: "512Mi"
+      cpu: "700m"
+      ephemeral-storage: "4Gi"
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  path: /
+
+prometheus:
+  path: "/actuator/prometheus"
+  scrape: "true"
+  scrape-role: "endpoints"
+  scrape-interval: "15s"
+
+# To make the service discoverable by ADP GUI Aggregator Service
+k8sLabelPropertyName: ui.ericsson.com/part-of
+k8sLabelPropertyValue: workspace-gui
+
+logging:
+  logstash:
+    host: eric-log-transformer
+    port: 5025
+labels: {}
+annotations: {}
+
+probes:
+  commonwfsui:
+    livenessProbe:
+      initialDelaySeconds: 200
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 6
+    readinessProbe:
+      initialDelaySeconds: 20
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 3
+podPriority:
+  commonwfsui:
+    priorityClassName: ""
+
+# DR1120-061 Tolerations to influence scheduling decisions made by Kubernetes scheduler
+tolerations:
+  commonwfsui:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+
+terminationGracePeriodSeconds:
+  commonwfsui: 30
+
+affinity:
+  podAntiAffinity: "hard"
+  topologyKey: "kubernetes.io/hostname"
+
+highAvailability:
+  debug: false
+  serviceMesh:
+    routes:
+      get:
+        retries:
+          maxAttempts: 2
+          perTryTimeout: 5s
+        timeout: 8s
+    trafficPolicy:
+      outlierDetection:
+        splitExternalLocalOriginErrors: true
+        consecutiveLocalOriginFailures: 2
+        consecutive5xxErrors: 2
+        interval: 5s
+        baseEjectionTime: 1m
+
+# DR D1123-127
+appArmorProfile:
+  # The setting applies to all container when the container name is omitted.
+  # { choice='unconfined, runtime/default, localhost, "" ' } [ default="" ]
+  type: ""
+
+# DR D1123-128
+seccompProfile:
+  # The setting applies to all container when the container name is omitted.
+  # { choice='unconfined, runtime/default, localhost, "" ' } [ default="" ]
+  type: ""
+
+# DR D1123-134
+securityPolicy:
+  rolename: ""

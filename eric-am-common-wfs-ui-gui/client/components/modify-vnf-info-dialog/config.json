@@ -1,0 +1,8 @@
+{
+  "script":"modify-vnf-info-dialog/ModifyVnfInfoDialog",
+  "id":"ModifyVnfInfoDialog",
+  "data": {},
+  "dependencies":{
+    "@eui/lit-component":"0.6.4"
+  }
+}

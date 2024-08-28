@@ -1,0 +1,9 @@
+{
+  "vnfInstanceName": "Resource",
+  "lifecycleOperationType": "Instantiate",
+  "operationState": "Event",
+  "vnfProductName": "Type",
+  "vnfSoftwareVersion": "Software version",
+  "stateEnteredTime": "Timestamp",
+  "username": "Modified by"
+}

@@ -1,0 +1,17 @@
+{
+  "script": "clusters/Clusters",
+  "title": "CISM Clusters",
+  "menu": {
+    "id": "CISM_CLUSTERS",
+    "data": {
+      "path": "clusters"
+    }
+  },
+  "route": "clusters",
+  "localePath": "locale/",
+  "dependencies": {
+    "@eui/component": "0.6.4",
+    "@eui/lit-component": "0.6.4",
+    "@eui/app": "0.6.1"
+  }
+}

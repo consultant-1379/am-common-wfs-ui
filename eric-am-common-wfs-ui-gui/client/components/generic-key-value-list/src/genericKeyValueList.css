@@ -1,0 +1,76 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+/* style goes here */
+:host {
+  display: block;
+}
+
+.key-value-list {
+  display: inline-block;
+  width: 100%;
+}
+
+.key-value-list-item {
+  display: inline-block;
+  width: 100%;
+}
+
+.key-value-list-key {
+  opacity: 0.7;
+  padding-bottom: 0.5rem;
+}
+
+.key-value-list-key.horizontal {
+  text-align: right;
+}
+
+.key-value-list-value {
+  float: left;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.key-value-list-value.horizontal {
+  text-align: left;
+  padding-bottom: 0.5rem;
+}
+
+.key-value-list-value.vertical {
+  padding-bottom: 1rem;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.vertical {
+  text-align: left;
+}
+
+.horizontal {
+  width: 50%;
+}
+
+.description {
+  display: block;
+  text-align: left;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.align-keys.horizontal {
+  text-align: left;
+  float: right;
+}

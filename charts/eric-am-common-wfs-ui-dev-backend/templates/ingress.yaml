@@ -1,0 +1,57 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+{{/*The apiVersion check can be removed when only k8s >=1.19 is supported*/}}
+{{- $isApiNetworkingV1 := .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" }}
+{{- if $isApiNetworkingV1 }}
+apiVersion: networking.k8s.io/v1
+{{- else }}
+apiVersion: networking.k8s.io/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  annotations: {{- include "eric-am-common-wfs-ui-dev-backend.annotations" . | nindent 4 }}
+  labels: {{- include "eric-am-common-wfs-ui-dev-backend.labels.extended-defaults" . | nindent 4 }}
+  annotations:
+  {{- if .Values.ingress.iccr }}
+    kubernetes.io/ingress.class: "iccr"
+  {{- end }}
+{{toYaml .Values.ingress.annotations | indent 4 }}
+  name: {{ template "eric-am-common-wfs-ui-dev-backend.name" . }}
+spec:
+ {{- if .Values.ingress.tls.enabled }}
+  tls:
+  - hosts:
+    - {{ required "A valid .Values.global.hosts.vnfm entry required" .Values.global.hosts.vnfm}}
+    secretName: {{ required "A valid .Values.ingress.tls.secretName entry required" .Values.ingress.tls.secretname }}
+ {{- end }}
+  rules:
+  - host: {{.Values.global.hosts.vnfm }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        {{- if $isApiNetworkingV1 }}
+        backend:
+          service:
+            name: eric-eo-api-gateway
+            port:
+              number: 80
+        {{- else }}
+        backend:
+          serviceName: eric-eo-api-gateway
+          servicePort: 80
+        {{- end }}

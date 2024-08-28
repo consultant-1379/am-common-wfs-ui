@@ -1,0 +1,80 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+.centeredParent {
+  margin: auto;
+}
+
+.table {
+  display: table;
+  width: 100%;
+}
+
+.tr {
+  display: table-row;
+  width: 100%;
+}
+
+.td {
+  display: table-cell;
+  width: 50%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.paddingInputTd {
+  padding-left: 15%;
+}
+
+.paddingDescriptionTd {
+  padding-left: 5rem;
+  vertical-align: middle;
+}
+
+.inlineBlock {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.input {
+  padding-top: 5px;
+}
+
+eui-base-v0-checkbox,
+eui-base-v0-radio-button {
+  padding-right: 1rem;
+}
+
+.bottomBorder {
+  border-bottom: 1px solid darkgray;
+}
+
+.secret-title {
+  padding-top: 1.5em;
+  font-weight: bold;
+}
+
+.errorJsonMessage, .errorValuesMessage, .errorTypeMessage, .errorValuesYaml {
+  margin-top: 10px;
+  display: none;
+  color: red;
+  width: 75%;
+}
+
+.label-suffix {
+  font-size: 9px;
+  margin-left: 5px;
+  color: #4a4a4a;
+}

@@ -1,0 +1,201 @@
+/*******************************************************************************
+ * COPYRIGHT Ericsson 2024
+ *
+ *
+ *
+ * The copyright to the computer program(s) herein is the property of
+ *
+ * Ericsson Inc. The programs may be used and/or copied only with written
+ *
+ * permission from Ericsson Inc. or in accordance with the terms and
+ *
+ * conditions stipulated in the agreement/contract under which the
+ *
+ * program(s) have been supplied.
+ ******************************************************************************/
+/* style goes here */
+:host {
+  display: block;
+}
+
+/* css specific for Flyout panel */
+.divTableFlyout {
+  display: table;
+  width: 100%;
+}
+
+.divTableFlyout .divTableBody {
+  display: table-row-group;
+}
+
+.divTableFlyout .divTableRow {
+  display: table-row;
+  height: 38px;
+}
+
+.divTableFlyout .divTableCell {
+  display: table-cell;
+  padding-bottom: 13px;
+}
+
+.divTableFlyout .divTableCell:nth-child(1) {
+  width: 200px;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+.divTableFlyout .divTableCell:nth-child(2) {
+  font-weight: bold;
+  white-space: nowrap;
+  width: 120px;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.divTableFlyout .nextRow {
+  display: table-row-group;
+}
+
+.divTableFlyout .firstRow {
+  width: 100px;
+  height: 38px;
+}
+
+.divTableFlyout .nextRow .divTableCell:nth-child(2) {
+  white-space: nowrap;
+  position: relative;
+  left: 57px;
+}
+
+.flyoutDesc .divTableRow .divTableCellDesc {
+  padding-top: 10px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.divTableCellDesc {
+  padding-top: 10px;
+  width: 46%;
+  font-weight: bold;
+}
+
+.title-deploy-module{
+  font-weight: bold;
+}
+
+.divTableBody {
+  margin-bottom: 1rem;
+}
+
+.divTablePage .divTableRow {
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 944px) and (max-width: 954px) {
+  .divTablePage .divTableRow {
+    display: table-cell;
+    width: 90px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 955px) and (max-width: 1027px) {
+  .divTablePage .divTableRow {
+    display: table-cell;
+    width: 100px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 1028px) and (max-width: 1139px) {
+  .divTablePage .divTableRow {
+    display: table-cell;
+    width: 120px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 1140px) and (max-width: 1279px) {
+  .divTablePage .divTableRow {
+    display: table-cell;
+    width: 150px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1531px) {
+  .divTablePage .divTableRow {
+    display: table-cell;
+    padding-right: 20px;
+    width: 170px;
+  }
+}
+
+@media (min-width: 1532px) {
+  .divTablePage .divTableRow {
+    display: table-cell;
+    padding-right: 20px;
+    width: 230px;
+  }
+}
+
+.divTablePage .divTableCell {
+  display: block;
+  padding-bottom: 5px;
+  width: inherit;
+  overflow-wrap: break-word;
+}
+
+.divTablePage .divTableCell:nth-child(1) {
+  opacity: 0.7;
+}
+
+.divTablePage .divTableCell:nth-child(2) {
+  font-weight: bold;
+}
+
+.heading {
+  font-weight: bold;
+}
+
+.filter {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.filter eui-base-v0-text-field {
+  width: 15%;
+}
+
+.operationsTab .table {
+  padding-top: 20px;
+}
+
+a:link {
+  color: var(--blue);
+}
+
+a:hover {
+  color: var(--blue-lighten-15);
+}
+
+.divTableCellDescTitle {
+  opacity: 0.7;
+}
+
+.pods-error--wrapper,
+.loader-wrapper {
+  margin-top: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 250px);
+  font-size: 16px;
+}
+
+.pods-error--title > span {
+  font-weight: bold;
+  margin-left: 5px;
+}

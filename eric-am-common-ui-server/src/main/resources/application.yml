@@ -1,0 +1,91 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+spring:
+  main.banner-mode: "off"
+  cloud:
+    discovery:
+      client:
+        composite-indicator:
+          enabled: false
+  lifecycle:
+    timeout-per-shutdown-phase: "10s"
+
+server:
+  port: 8080
+  socket: localhost
+  shutdown: graceful
+
+# Contact info for API doc generation
+contact:
+  name: Honey Badgers
+  email: PDLHONEYBA@pdl.internal.ericsson.com
+
+management:
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "heapdump,threaddump,env"
+  endpoint:
+    env:
+      enabled: false
+    heapdump:
+      enabled: false
+    threaddump:
+      enabled: false
+    health:
+      show-details: "ALWAYS"
+      diskspace:
+        enabled: true
+        path: /tmp
+        threshold: 100MB
+      probes:
+        enabled: true
+      group:
+        readiness:
+          include: ping, diskSpace, pvcCheck
+        liveness:
+          include: ping, diskSpace
+    prometheus:
+      enabled: true
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      sla:
+        http:
+          server:
+            requests: 100ms,300ms,500ms
+  tracing:
+    propagation:
+      consume: [b3, w3c]
+      produce: [b3, w3c]
+
+healthCheckEnv:
+  mountPaths:
+    readWrite: /tmp
+
+logging:
+  config: "classpath:logback/logback-${LOG_STREAMINGMETHOD:indirect}.xml"

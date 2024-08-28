@@ -1,0 +1,39 @@
+ {
+      "apps": [
+        {
+          "name": "EVNFM Resources",
+          "url": "/vnfm#resources",
+          "version": "1.0.0",
+          "displayName": "CNF Resources",
+          "descriptionShort": "Management of network function resources",
+          "descriptionLong": "Full lifecycle of resources, including instantiation, upgrade, termination",
+          "groupNames": [ "EVNFM", "eoportalEO" ]
+        },
+        {
+          "name": "EVNFM Packages",
+          "url": "/vnfm#packages",
+          "version": "1.0.0",
+          "displayName": "CNF Packages",
+          "descriptionShort": "Management of network function packages",
+          "descriptionLong": "Management of onboarded CSAR packages",
+          "groupNames": [ "EVNFM", "eoportalEO" ]
+        },
+        {
+          "name": "EVNFM Operations",
+          "url": "/vnfm#operations",
+          "version": "1.0.0",
+          "displayName": "CNF Operations",
+          "descriptionShort": "Report of user activities",
+          "descriptionLong": "Audit trail of all operations carried out on packages and resources",
+          "groupNames": [ "EVNFM", "eoportalEO" ]
+        }
+      ],
+      "groups": [
+        {
+          "name": "EVNFM",
+          "version": "1.0.0",
+          "type": "category",
+          "displayName": "EVNFM"
+        }
+      ]
+   }
